@@ -26,6 +26,12 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company
         fields = '__all__'
 
+    def validate(self, attrs):
+        if self.initial_data.get('type') == 'FA' and self.initial_data.get('supplier') is not None:
+            raise serializers.ValidationError("У предприятия типа 'Factory' не может быть поставщика")
+
+        return attrs
+
     def create(self, validated_data):
         if 'product' in self.initial_data:
             products_data = validated_data.pop('product')

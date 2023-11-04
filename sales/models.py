@@ -9,7 +9,7 @@ class Company(models.Model):
         ('IE', 'Individual entrepreneur')
     )
     title = models.CharField(max_length=200, verbose_name='название')
-    type = models.CharField(max_length=2, choices=TYPE_CHOICES, verbose_name='тип поставщика')
+    type = models.CharField(max_length=2, choices=TYPE_CHOICES, verbose_name='тип компании')
     supplier = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,
                                  verbose_name='поставщик', related_name='company')
     debt = models.DecimalField(max_digits=20, decimal_places=2, verbose_name='задолженность поставщику', default=0)
