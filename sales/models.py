@@ -44,7 +44,7 @@ class Contacts(models.Model):
 
 
 class Product(models.Model):
-    """Модель продуктов компании"""
+    """Модель продукта компании"""
     company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name='компания',
                                 related_name='product', null=True)
     title = models.CharField(max_length=200, verbose_name='название')
