@@ -3,6 +3,8 @@ from django.utils import timezone
 
 
 class Company(models.Model):
+    """Модель компании"""
+
     TYPE_CHOICES = (
         ('FA', 'Factory'),
         ('RN', 'Retail network'),
@@ -24,6 +26,7 @@ class Company(models.Model):
 
 
 class Contacts(models.Model):
+    """Модель контактов компании"""
     company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name='компания',
                                 related_name='contacts', null=True)
     email = models.EmailField(verbose_name='email')
@@ -41,6 +44,7 @@ class Contacts(models.Model):
 
 
 class Product(models.Model):
+    """Модель продуктов компании"""
     company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name='компания',
                                 related_name='product', null=True)
     title = models.CharField(max_length=200, verbose_name='название')

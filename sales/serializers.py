@@ -4,6 +4,7 @@ from sales.models import Company, Contacts, Product
 
 
 class ContactsSerializer(serializers.ModelSerializer):
+    """Сериалайзер для класса :model:`sales.Contacts`"""
     id = serializers.IntegerField(required=False)
 
     class Meta:
@@ -12,6 +13,7 @@ class ContactsSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    """Сериалайзер для класса :model:`sales.Product`"""
     id = serializers.IntegerField(required=False)
     class Meta:
         model = Product
@@ -19,6 +21,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class CompanySerializer(serializers.ModelSerializer):
+    """Сериалайзер для класса :model:`sales.Company`"""
     contacts = ContactsSerializer(many=True, required=True)
     product = ProductSerializer(many=True, required=False)
 
@@ -49,6 +52,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class CompanyUpdateSerializer(serializers.ModelSerializer):
+    """Сериалайзер для обновления класса :model:`sales.Company`"""
     contacts = ContactsSerializer(many=True, required=False)
     product = ProductSerializer(many=True, required=False)
 
